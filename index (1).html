@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SwiftShift Packers & Movers — Premium relocation services for homes, offices, and vehicles. Safe, fast, and stress-free moving across India." />
+  <meta name="keywords" content="packers and movers, home relocation, office shifting, vehicle transport, moving services India" />
+  <meta name="author" content="SwiftShift Movers" />
+  <meta property="og:title" content="SwiftShift Packers & Movers" />
+  <meta property="og:description" content="Premium relocation services. We move what matters." />
+  <meta property="og:type" content="website" />
+  <title>SwiftShift | Packers & Movers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ────────────────────────────────────────────── */
+    :root {
+      --ink:      #0e0e0e;
+      --paper:    #f5f0e8;
+      --gold:     #c8922a;
+      --gold-lt:  #e8b84b;
+      --rust:     #8b3a2a;
+      --mist:     #1c1c1c;
+      --surface:  #161616;
+      --card:     #1f1f1f;
+      --line:     rgba(200,146,42,0.25);
+      --radius:   6px;
+      --ff-head:  'Playfair Display', Georgia, serif;
+      --ff-display: 'Bebas Neue', sans-serif;
+      --ff-body:  'DM Sans', sans-serif;
+      --ease:     cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--surface);
+      color: #d8d0c4;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── CUSTOM CURSOR ──────────────────────────────────────── */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s, width 0.25s, height 0.25s, background 0.25s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: all 0.18s var(--ease);
+      opacity: 0.6;
+    }
+    @media (hover: none) { .cursor, .cursor-ring { display: none; } }
+
+    /* ── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+
+    /* ── NOISE OVERLAY ──────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      transition: background 0.4s;
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.75rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .nav-logo span { color: var(--paper); }
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a09890;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--paper); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--ink) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: var(--radius);
+      font-weight: 600 !important;
+      letter-spacing: 0.08em;
+      transition: background 0.25s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--paper);
+      transition: all 0.3s var(--ease);
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed; inset: 72px 0 0 0;
+        background: rgba(14,14,14,0.97);
+        backdrop-filter: blur(20px);
+        flex-direction: column; gap: 0;
+        padding: 2rem 0;
+        transform: translateX(100%);
+        transition: transform 0.4s var(--ease);
+      }
+      .nav-links.open { transform: none; }
+      .nav-links a { padding: 1.2rem 2rem; width: 100%; font-size: 1rem; }
+      .nav-cta { margin: 1rem 2rem; width: calc(100% - 4rem); text-align: center; }
+    }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      background: var(--surface);
+      padding: clamp(7rem, 12vw, 10rem) clamp(2rem, 6vw, 5rem) 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 32px; height: 1px;
+      background: var(--gold);
+    }
+    .hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--paper);
+      margin-bottom: 1.75rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: #8a8278;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      border: none; cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(200,146,42,0.28);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      background: transparent;
+      color: var(--paper);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(200,146,42,0.08);
+    }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 2.4rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: #6a6460;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+
+    /* Hero right — visual panel */
+    .hero-right {
+      position: relative;
+      background: var(--mist);
+      overflow: hidden;
+    }
+    .hero-right-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(200,146,42,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse at 30% 80%, rgba(139,58,42,0.15) 0%, transparent 60%),
+        linear-gradient(160deg, #1a1612 0%, #0e0e0e 100%);
+    }
+    .hero-float-card {
+      position: absolute;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-float-card:nth-child(2) { animation-delay: -2s; }
+    .hero-float-card:nth-child(3) { animation-delay: -4s; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    .card-a { top: 18%; left: 8%; }
+    .card-b { top: 42%; right: 8%; }
+    .card-c { bottom: 20%; left: 12%; }
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+    .card-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--paper);
+    }
+    .card-sub {
+      font-size: 0.7rem;
+      color: #6a6460;
+      margin-top: 0.2rem;
+    }
+    .card-badge {
+      display: inline-block;
+      background: rgba(200,146,42,0.15);
+      color: var(--gold);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 30px;
+      margin-top: 0.5rem;
+      border: 1px solid rgba(200,146,42,0.3);
+    }
+    .hero-truck {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(5rem, 10vw, 9rem);
+      filter: drop-shadow(0 20px 60px rgba(200,146,42,0.25));
+      animation: truckBob 4s ease-in-out infinite;
+    }
+    @keyframes truckBob {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(-8px); }
+    }
+    .hero-line-deco {
+      position: absolute;
+      top: 50%; left: 0;
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
+
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 320px; }
+      .hero-truck { font-size: 5rem; bottom: 5%; }
+      .hero-stats { gap: 1.5rem; }
+      .stat-num { font-size: 1.8rem; }
+    }
+
+    /* ── TICKER ─────────────────────────────────────────────── */
+    .ticker-wrap {
+      background: var(--gold);
+      color: var(--ink);
+      padding: 0.65rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-inner span {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0 3rem;
+    }
+    .ticker-inner span::before {
+      content: '◆';
+      margin-right: 1.5rem;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION SHARED ─────────────────────────────────────── */
+    section { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem); }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--paper);
+      line-height: 1.15;
+      max-width: 680px;
+    }
+    .section-title em { color: var(--gold); font-style: italic; }
+
+    /* ── WHY US ─────────────────────────────────────────────── */
+    #why {
+      background: var(--mist);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .why-features { display: flex; flex-direction: column; gap: 1.8rem; }
+    .why-feat {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .why-feat:last-child { border-bottom: none; padding-bottom: 0; }
+    .feat-num {
+      font-family: var(--ff-display);
+      font-size: 2rem;
+      color: rgba(200,146,42,0.25);
+      line-height: 1;
+      min-width: 48px;
+    }
+    .feat-body h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 0.35rem;
+    }
+    .feat-body p { font-size: 0.88rem; color: #7a7268; line-height: 1.65; }
+
+    .why-visual {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .why-visual-inner {
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(ellipse at 40% 50%, rgba(200,146,42,0.18) 0%, transparent 60%),
+        linear-gradient(135deg, #1a1612, #0e0e0e);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .big-icon { font-size: 6rem; filter: drop-shadow(0 8px 30px rgba(200,146,42,0.35)); }
+    .why-badge {
+      position: absolute; bottom: 1.5rem; right: 1.5rem;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .why-badge strong { display: block; font-size: 1.5rem; font-family: var(--ff-display); }
+    .why-badge span { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ── SERVICES ───────────────────────────────────────────── */
+    #services { background: var(--surface); }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5px;
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .service-card {
+      background: var(--card);
+      padding: 2.5rem 2rem;
+      position: relative;
+      cursor: default;
+      overflow: hidden;
+      transition: background 0.35s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(200,146,42,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .service-card:hover { background: #232020; }
+    .service-card:hover::before { opacity: 1; }
+    .sc-icon {
+      font-size: 2.4rem;
+      margin-bottom: 1.2rem;
+      display: block;
+      transition: transform 0.4s var(--ease);
+    }
+    .service-card:hover .sc-icon { transform: scale(1.12) rotate(-4deg); }
+    .sc-num {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      font-family: var(--ff-display);
+      font-size: 3.5rem;
+      color: rgba(200,146,42,0.07);
+      line-height: 1;
+    }
+    .sc-title {
+      font-family: var(--ff-head);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 0.75rem;
+    }
+    .sc-desc {
+      font-size: 0.87rem;
+      color: #6e6862;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .sc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .sc-tag {
+      font-size: 0.68rem;
+      padding: 0.25rem 0.65rem;
+      background: rgba(200,146,42,0.1);
+      color: var(--gold);
+      border-radius: 20px;
+      border: 1px solid rgba(200,146,42,0.2);
+      letter-spacing: 0.05em;
+    }
+    .sc-arrow {
+      position: absolute; bottom: 1.5rem; right: 1.5rem;
+      width: 36px; height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      opacity: 0;
+      transform: translate(6px, 6px);
+      transition: opacity 0.3s, transform 0.3s var(--ease);
+    }
+    .service-card:hover .sc-arrow { opacity: 1; transform: none; }
+
+    /* ── PROCESS ────────────────────────────────────────────── */
+    #process {
+      background: var(--mist);
+      border-top: 1px solid var(--line);
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 36px; left: 0; right: 0; height: 1px;
+      background: var(--line);
+    }
+    .process-step {
+      padding: 0 1.5rem 2rem;
+      position: relative;
+    }
+    .step-dot {
+      width: 72px; height: 72px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--card);
+      font-size: 1.5rem;
+      margin-bottom: 1.75rem;
+      position: relative; z-index: 1;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+    }
+    .process-step:hover .step-dot {
+      background: rgba(200,146,42,0.15);
+      border-color: var(--gold);
+      transform: scale(1.08);
+    }
+    .step-n {
+      position: absolute; top: -6px; right: -6px;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      color: var(--ink);
+      border-radius: 50%;
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 0.5rem;
+    }
+    .step-desc { font-size: 0.84rem; color: #6a6460; line-height: 1.65; }
+
+    @media (max-width: 600px) {
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+    }
+
+    /* ── TESTIMONIALS ───────────────────────────────────────── */
+    #testimonials { background: var(--surface); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .testi-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 2rem;
+      position: relative;
+      transition: transform 0.35s var(--ease), border-color 0.35s;
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,146,42,0.45);
+    }
+    .testi-quote {
+      font-family: var(--ff-head);
+      font-size: 3.5rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .testi-text {
+      font-size: 0.9rem;
+      color: #8a8278;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 40px; height: 40px;
+      background: rgba(200,146,42,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .testi-name { font-size: 0.88rem; font-weight: 600; color: var(--paper); }
+    .testi-city { font-size: 0.75rem; color: #6a6460; }
+
+    /* ── CONTACT ────────────────────────────────────────────── */
+    #contact {
+      background: var(--mist);
+      border-top: 1px solid var(--line);
+    }
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+    .contact-info { }
+    .contact-info p {
+      font-size: 0.92rem;
+      color: #6e6862;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .info-items { display: flex; flex-direction: column; gap: 1.25rem; }
+    .info-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1rem 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: border-color 0.25s;
+    }
+    .info-item:hover { border-color: rgba(200,146,42,0.4); }
+    .info-icon { font-size: 1.25rem; margin-top: 1px; }
+    .info-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .info-val { font-size: 0.9rem; color: var(--paper); }
+
+    /* Form */
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+    }
+    .form-title {
+      font-family: var(--ff-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 0.35rem;
+    }
+    .form-sub { font-size: 0.84rem; color: #6a6460; margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.25rem; }
+    .form-group label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6a6460;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      color: var(--paper);
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      -webkit-appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8922a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200,146,42,0.12);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #3e3a36; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: #1f1f1f; }
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .submit-btn:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(200,146,42,0.28);
+    }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .form-success.show { display: block; }
+    .form-success .success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+    .form-success h3 { font-family: var(--ff-head); font-size: 1.5rem; color: var(--paper); margin-bottom: 0.5rem; }
+    .form-success p { color: #6a6460; font-size: 0.9rem; }
+
+    @media (max-width: 900px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 500px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: #0a0a0a;
+      border-top: 1px solid var(--line);
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 6vw, 5rem) 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { margin-bottom: 1rem; }
+    .footer-tagline { font-size: 0.85rem; color: #4a4640; line-height: 1.7; max-width: 240px; }
+    .footer-socials {
+      display: flex; gap: 0.75rem; margin-top: 1.5rem;
+    }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .social-btn:hover { border-color: var(--gold); background: rgba(200,146,42,0.1); }
+    .footer-col h5 {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul li a {
+      font-size: 0.85rem;
+      color: #5a5450;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--paper); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: #3a3630; }
+    .footer-bottom .crafted { color: #4a4640; font-size: 0.78rem; }
+    .footer-bottom .crafted span { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 500px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ── BACK TO TOP ────────────────────────────────────────── */
+    .back-top {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px;
+      background: var(--gold);
+      color: var(--ink);
+      border: none; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; cursor: pointer;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      z-index: 800;
+    }
+    .back-top.visible { opacity: 1; transform: none; }
+    .back-top:hover { background: var(--gold-lt); }
+
+    /* ── FLOATING PHONE ─────────────────────────────────────── */
+    .float-phone {
+      position: fixed; bottom: 2rem; left: 2rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 40px;
+      padding: 0.6rem 1.2rem 0.6rem 0.6rem;
+      z-index: 800;
+      cursor: pointer;
+      transition: border-color 0.25s, transform 0.25s;
+      text-decoration: none;
+    }
+    .float-phone:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .phone-dot {
+      width: 32px; height: 32px;
+      background: rgba(200,146,42,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(200,146,42,0.4); }
+      50%      { box-shadow: 0 0 0 8px rgba(200,146,42,0); }
+    }
+    .phone-text { font-size: 0.8rem; color: var(--paper); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAV ───────────────────────────────────────────────────── -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-logo" aria-label="SwiftShift Home">
+    🚛 <span>Swift<em style="color:var(--gold)">Shift</em></span>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks" role="list">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get Quote</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<main>
+<section id="hero" aria-label="Hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow reveal">Trusted Across India Since 2012</div>
+    <h1 class="hero-title reveal" style="transition-delay:0.1s">
+      We Move<br><em>What Matters</em><br>Most to You.
+    </h1>
+    <p class="hero-desc reveal" style="transition-delay:0.2s">
+      Premium relocation services tailored to your needs — homes, offices, vehicles. 
+      Professional packing, careful transit, guaranteed delivery.
+    </p>
+    <div class="hero-actions reveal" style="transition-delay:0.3s">
+      <a href="#contact" class="btn-primary">
+        <span>Get Free Quote</span>
+        <span>→</span>
+      </a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+    <div class="hero-stats reveal" style="transition-delay:0.45s">
+      <div>
+        <div class="stat-num" data-count="12000">0</div>
+        <div class="stat-label">Happy Moves</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="50">0</div>
+        <div class="stat-label">Cities Covered</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="13">0</div>
+        <div class="stat-label">Years of Trust</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right" aria-hidden="true">
+    <div class="hero-right-bg"></div>
+    <div class="hero-line-deco"></div>
+    <div class="hero-float-card card-a">
+      <div class="card-icon">📦</div>
+      <div class="card-title">Packing Complete</div>
+      <div class="card-sub">3 BHK — Hyderabad</div>
+      <div class="card-badge">✓ Insured</div>
+    </div>
+    <div class="hero-float-card card-b">
+      <div class="card-icon">🛡️</div>
+      <div class="card-title">Zero Damage</div>
+      <div class="card-sub">Guaranteed Transit</div>
+      <div class="card-badge">★ 4.9/5</div>
+    </div>
+    <div class="hero-float-card card-c">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Express Delivery</div>
+      <div class="card-sub">Same-day available</div>
+      <div class="card-badge">On-time</div>
+    </div>
+    <div class="hero-truck">🚚</div>
+  </div>
+</section>
+
+<!-- ── TICKER ─────────────────────────────────────────────────── -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Home Relocation</span>
+    <span>Office Shifting</span>
+    <span>Vehicle Transport</span>
+    <span>International Moves</span>
+    <span>Warehouse Storage</span>
+    <span>24/7 Support</span>
+    <span>Fully Insured</span>
+    <span>Pan-India Network</span>
+    <span>Home Relocation</span>
+    <span>Office Shifting</span>
+    <span>Vehicle Transport</span>
+    <span>International Moves</span>
+    <span>Warehouse Storage</span>
+    <span>24/7 Support</span>
+    <span>Fully Insured</span>
+    <span>Pan-India Network</span>
+  </div>
+</div>
+
+<!-- ── WHY US ─────────────────────────────────────────────────── -->
+<section id="why" aria-labelledby="why-heading">
+  <div class="section-label reveal">Our Edge</div>
+  <h2 class="section-title reveal" id="why-heading" style="transition-delay:0.1s">
+    Not just movers —<br><em>your moving partners.</em>
+  </h2>
+  <div class="why-grid">
+    <div class="why-features">
+      <div class="why-feat reveal">
+        <div class="feat-num">01</div>
+        <div class="feat-body">
+          <h4>Precision Packing</h4>
+          <p>Every item individually wrapped using industrial-grade materials — foam, bubble wrap, custom crating for fragile antiques and electronics.</p>
+        </div>
+      </div>
+      <div class="why-feat reveal" style="transition-delay:0.1s">
+        <div class="feat-num">02</div>
+        <div class="feat-body">
+          <h4>GPS-Tracked Fleet</h4>
+          <p>Real-time tracking on every truck. Know exactly where your belongings are at any moment via our app or WhatsApp updates.</p>
+        </div>
+      </div>
+      <div class="why-feat reveal" style="transition-delay:0.2s">
+        <div class="feat-num">03</div>
+        <div class="feat-body">
+          <h4>Full Transit Insurance</h4>
+          <p>Comprehensive coverage on all moves. We file claims, handle paperwork, and ensure full reimbursement if damage ever occurs.</p>
+        </div>
+      </div>
+      <div class="why-feat reveal" style="transition-delay:0.3s">
+        <div class="feat-num">04</div>
+        <div class="feat-body">
+          <h4>Transparent Pricing</h4>
+          <p>Fixed-rate quotes. No hidden fees. No weekend surcharges. What you see is exactly what you pay — guaranteed in writing.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual reveal-left">
+      <div class="why-visual-inner">
+        <div class="big-icon">🏠</div>
+      </div>
+      <div class="why-badge">
+        <strong>4.9★</strong>
+        <span>10,000+ Reviews</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ───────────────────────────────────────────────── -->
+<section id="services" aria-labelledby="services-heading">
+  <div class="services-header">
+    <div>
+      <div class="section-label reveal">What We Do</div>
+      <h2 class="section-title reveal" id="services-heading" style="transition-delay:0.1s">
+        Every move type,<br><em>expertly handled.</em>
+      </h2>
+    </div>
+  </div>
+  <div class="services-grid" role="list">
+
+    <article class="service-card reveal" role="listitem" style="transition-delay:0.05s">
+      <span class="sc-num">01</span>
+      <span class="sc-icon">🏠</span>
+      <h3 class="sc-title">Home Relocation</h3>
+      <p class="sc-desc">Full-service household moves from studio apartments to 5+ BHK villas. We disassemble, pack, transport, and reassemble everything at your new home.</p>
+      <div class="sc-tags">
+        <span class="sc-tag">Packing</span>
+        <span class="sc-tag">Furniture</span>
+        <span class="sc-tag">Fragile Items</span>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </article>
+
+    <article class="service-card reveal" role="listitem" style="transition-delay:0.1s">
+      <span class="sc-num">02</span>
+      <span class="sc-icon">🏢</span>
+      <h3 class="sc-title">Office Shifting</h3>
+      <p class="sc-desc">Minimal downtime office relocations. We plan around your schedule, handle servers, workstations, and furniture with precision and confidentiality.</p>
+      <div class="sc-tags">
+        <span class="sc-tag">IT Equipment</span>
+        <span class="sc-tag">Workstations</span>
+        <span class="sc-tag">Minimal Downtime</span>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </article>
+
+    <article class="service-card reveal" role="listitem" style="transition-delay:0.15s">
+      <span class="sc-num">03</span>
+      <span class="sc-icon">🚗</span>
+      <h3 class="sc-title">Vehicle Transport</h3>
+      <p class="sc-desc">Door-to-door car and two-wheeler transport on enclosed carriers. GPS tracked, fully insured, zero-scratch delivery promise on every vehicle.</p>
+      <div class="sc-tags">
+        <span class="sc-tag">Cars</span>
+        <span class="sc-tag">Bikes</span>
+        <span class="sc-tag">Enclosed Carriers</span>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </article>
+
+    <article class="service-card reveal" role="listitem" style="transition-delay:0.2s">
+      <span class="sc-num">04</span>
+      <span class="sc-icon">🌍</span>
+      <h3 class="sc-title">International Moving</h3>
+      <p class="sc-desc">Seamless cross-border relocations with customs clearance assistance, international freight, and destination-country partner network across 40+ countries.</p>
+      <div class="sc-tags">
+        <span class="sc-tag">Customs Clearance</span>
+        <span class="sc-tag">Air & Sea Freight</span>
+        <span class="sc-tag">40+ Countries</span>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </article>
+
+    <article class="service-card reveal" role="listitem" style="transition-delay:0.25s">
+      <span class="sc-num">05</span>
+      <span class="sc-icon">🏭</span>
+      <h3 class="sc-title">Warehouse & Storage</h3>
+      <p class="sc-desc">Secure, climate-controlled storage facilities with 24/7 CCTV surveillance. Flexible short-term and long-term options for homes or businesses.</p>
+      <div class="sc-tags">
+        <span class="sc-tag">Climate Controlled</span>
+        <span class="sc-tag">CCTV</span>
+        <span class="sc-tag">Flexible Duration</span>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </article>
+
+    <article class="service-card reveal" role="listitem" style="transition-delay:0.3s">
+      <span class="sc-num">06</span>
+      <span class="sc-icon">⚡</span>
+      <h3 class="sc-title">Express Delivery</h3>
+      <p class="sc-desc">Same-day or next-day urgent moves within the city. Perfect for last-minute relocations, emergencies, and time-sensitive business deliveries.</p>
+      <div class="sc-tags">
+        <span class="sc-tag">Same Day</span>
+        <span class="sc-tag">24/7 Available</span>
+        <span class="sc-tag">Priority Handling</span>
+      </div>
+      <div class="sc-arrow">↗</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ── PROCESS ────────────────────────────────────────────────── -->
+<section id="process" aria-labelledby="process-heading">
+  <div class="section-label reveal">How It Works</div>
+  <h2 class="section-title reveal" id="process-heading" style="transition-delay:0.1s">
+    Simple steps to your<br><em>perfect move.</em>
+  </h2>
+  <div class="process-steps" role="list">
+    <div class="process-step reveal" style="transition-delay:0s">
+      <div class="step-dot">
+        📋
+        <div class="step-n">1</div>
+      </div>
+      <h3 class="step-title">Request a Quote</h3>
+      <p class="step-desc">Fill our quick form or call us. We'll contact you within 30 minutes to understand your move.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.1s">
+      <div class="step-dot">
+        🏠
+        <div class="step-n">2</div>
+      </div>
+      <h3 class="step-title">Home Survey</h3>
+      <p class="step-desc">Our estimator visits (or does a video survey) to provide a precise, fixed-rate quote — no surprises.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.2s">
+      <div class="step-dot">
+        📦
+        <div class="step-n">3</div>
+      </div>
+      <h3 class="step-title">Expert Packing</h3>
+      <p class="step-desc">Our crew arrives with all materials. Every item labelled, wrapped, and loaded with care.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.3s">
+      <div class="step-dot">
+        🚚
+        <div class="step-n">4</div>
+      </div>
+      <h3 class="step-title">Safe Transit</h3>
+      <p class="step-desc">GPS-tracked transport with live updates. You can monitor the move from your phone.</p>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.4s">
+      <div class="step-dot">
+        🏡
+        <div class="step-n">5</div>
+      </div>
+      <h3 class="step-title">Delivery & Setup</h3>
+      <p class="step-desc">We unpack, reassemble furniture, and won't leave until you're fully settled in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────────────────── -->
+<section id="testimonials" aria-labelledby="testi-heading">
+  <div class="section-label reveal">Customer Stories</div>
+  <h2 class="section-title reveal" id="testi-heading" style="transition-delay:0.1s">
+    Trusted by thousands<br><em>across India.</em>
+  </h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal" style="transition-delay:0.05s">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Moved my 3 BHK from Hyderabad to Bangalore — zero damage, zero stress. The team arrived on time, packed everything perfectly. Worth every rupee.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👨</div>
+        <div>
+          <div class="testi-name">Rajesh Kumar</div>
+          <div class="testi-city">Hyderabad → Bangalore</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.12s">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Office relocation of 50+ workstations completed over the weekend. Back to full operations Monday morning. Exceptional professionalism throughout.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👩</div>
+        <div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-city">Operations Manager, Pune</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.2s">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Had my car transported from Delhi to Chennai. Got live GPS updates every hour and the car arrived in showroom condition. Outstanding service!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👦</div>
+        <div>
+          <div class="testi-name">Arjun Mehta</div>
+          <div class="testi-city">Delhi → Chennai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────── -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="section-label reveal">Get In Touch</div>
+  <h2 class="section-title reveal" id="contact-heading" style="transition-delay:0.1s">
+    Ready to move?<br><em>Let's talk.</em>
+  </h2>
+  <div class="contact-wrap">
+    <div class="contact-info reveal">
+      <p>Whether you're planning ahead or need to move tomorrow — we're ready. Fill the form for a free, no-obligation quote sent within the hour.</p>
+      <div class="info-items">
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <div>
+            <div class="info-label">Call Us</div>
+            <div class="info-val">+91 98765 43210</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">✉️</span>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-val">hello@swiftshift.in</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🕐</span>
+          <div>
+            <div class="info-label">Hours</div>
+            <div class="info-val">Mon – Sun, 6 AM – 10 PM</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div>
+            <div class="info-label">Head Office</div>
+            <div class="info-val">Banjara Hills, Hyderabad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal" style="transition-delay:0.15s">
+      <div id="formContent">
+        <p class="form-title">Request a Free Quote</p>
+        <p class="form-sub">We'll get back to you within 30 minutes.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Full Name *</label>
+            <input type="text" id="fname" name="name" placeholder="Rajesh Kumar" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="fphone">Phone Number *</label>
+            <input type="tel" id="fphone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel" pattern="[0-9+\s\-()]{8,15}" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ffrom">Moving From *</label>
+            <input type="text" id="ffrom" name="from" placeholder="City / Area" required />
+          </div>
+          <div class="form-group">
+            <label for="fto">Moving To *</label>
+            <input type="text" id="fto" name="to" placeholder="City / Area" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fservice">Service Required *</label>
+          <select id="fservice" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option value="home">🏠 Home Relocation</option>
+            <option value="office">🏢 Office Shifting</option>
+            <option value="vehicle">🚗 Vehicle Transport</option>
+            <option value="international">🌍 International Moving</option>
+            <option value="storage">🏭 Warehouse & Storage</option>
+            <option value="express">⚡ Express Delivery</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fmsg">Additional Details</label>
+          <textarea id="fmsg" name="message" placeholder="Flat size, number of rooms, special items, preferred dates…"></textarea>
+        </div>
+        <button type="button" class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+          <span>Get My Free Quote</span>
+          <span>→</span>
+        </button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">🎉</div>
+        <h3>Quote Request Sent!</h3>
+        <p>Our team will call you within 30 minutes with a free, detailed estimate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">🚛 <span>Swift<em style="color:var(--gold)">Shift</em></span></div>
+      <p class="footer-tagline">India's most trusted premium movers since 2012. We move what matters most to you.</p>
+      <div class="footer-socials" aria-label="Social media">
+        <div class="social-btn" title="Facebook">f</div>
+        <div class="social-btn" title="Instagram">📸</div>
+        <div class="social-btn" title="WhatsApp">💬</div>
+        <div class="social-btn" title="LinkedIn">in</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Home Relocation</a></li>
+        <li><a href="#services">Office Shifting</a></li>
+        <li><a href="#services">Vehicle Transport</a></li>
+        <li><a href="#services">International Moves</a></li>
+        <li><a href="#services">Storage Solutions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#">Track My Move</a></li>
+        <li><a href="#">Insurance Claims</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SwiftShift Packers & Movers. All rights reserved.</p>
+    <p class="crafted">Pan-India • <span>50+ Cities</span> • ISO Certified</p>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Float phone -->
+<a class="float-phone" href="tel:+919876543210" aria-label="Call us">
+  <div class="phone-dot">📞</div>
+  <span class="phone-text">Call Now</span>
+</a>
+
+<script>
+  /* ── Cursor ──────────────────────────────────────────────── */
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+  (function animRing(){
+    rx += (mx-rx)*0.14; ry += (my-ry)*0.14;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  })();
+  document.querySelectorAll('a,button,.service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cur.style.width='20px'; cur.style.height='20px'; ring.style.width='56px'; ring.style.height='56px'; });
+    el.addEventListener('mouseleave', () => { cur.style.width='12px'; cur.style.height='12px'; ring.style.width='36px'; ring.style.height='36px'; });
+  });
+
+  /* ── Hamburger ───────────────────────────────────────────── */
+  const ham = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  ham.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', false);
+  }));
+
+  /* ── Scroll reveal ───────────────────────────────────────── */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+
+  /* ── Counter animation ───────────────────────────────────── */
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        let current = 0;
+        const step = Math.ceil(target / 60);
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current.toLocaleString() + (target >= 1000 ? '+' : (target < 20 ? '+' : '+'));
+          if(current >= target) clearInterval(timer);
+        }, 24);
+        countObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+
+  /* ── Back to top ─────────────────────────────────────────── */
+  const btt = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  /* ── Form submit ─────────────────────────────────────────── */
+  function handleSubmit() {
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const service = document.getElementById('fservice').value;
+    const from = document.getElementById('ffrom').value.trim();
+    const to = document.getElementById('fto').value.trim();
+    if(!name || !phone || !service || !from || !to){
+      const btn = document.getElementById('submitBtn');
+      btn.style.background = '#8b3a2a';
+      btn.textContent = '⚠ Please fill all required fields';
+      setTimeout(() => { btn.style.background=''; btn.innerHTML='<span>Get My Free Quote</span><span>→</span>'; }, 2000);
+      return;
+    }
+    document.getElementById('formContent').style.opacity='0';
+    setTimeout(() => {
+      document.getElementById('formContent').style.display='none';
+      const s = document.getElementById('formSuccess');
+      s.classList.add('show');
+    }, 300);
+  }
+
+  /* ── Nav scroll style ────────────────────────────────────── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 50
+      ? 'rgba(10,10,10,0.97)'
+      : 'rgba(14,14,14,0.85)';
+  });
+</script>
+</body>
+</html>
